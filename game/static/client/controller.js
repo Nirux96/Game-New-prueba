@@ -3,8 +3,8 @@ class Controller {
     constructor() {
       this.squareWidthInPixels = 50;
       this.squareHeightInPixels = 50;
-      this.width = 1000;         // default: 800
-      this.height = 800;
+      this.width = window.innerWidth - 80;         // Pantalla completa menos padding
+      this.height = window.innerHeight - 80;
       this.playerSpriteWidth = 50;
       this.playerSpriteHeight = 50;
       this.mode = 'alive';
