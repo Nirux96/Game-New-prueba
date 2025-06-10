@@ -15,7 +15,8 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.set('port', 54070);
+const PORT = process.env.PORT || 54070;
+app.set('port', PORT);
 app.use('/static', express.static(__dirname + '/static'));
 
 
@@ -47,7 +48,8 @@ app.post('/goGame', function(req, res) {
   playersInQueue.push(req.body.nick);
 });
 
-server.listen(54070, "0.0.0.0");
+server.listen(PORT, "0.0.0.0");
+console.log('Server running on port ' + PORT);
 
 require('dns').lookup(require('os').hostname(), function (err, add, fam) {
   console.log('addr: '+add);
