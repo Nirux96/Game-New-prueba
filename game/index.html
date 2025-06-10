@@ -10,6 +10,7 @@
 <script src="static/client/controller.js"></script>
 
 <body>
+  <button id="fullscreenBtn" style="position: fixed; top: 10px; left: 10px; z-index: 1000; padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">🎮 Fullscreen</button>
   <script>
 "use strict";
 let leaderboard = [];
@@ -88,6 +89,60 @@ document.addEventListener("mousedown", function() {
 });
 document.addEventListener("mouseup", function() {
     input.LMB=false;
+});
+
+// Fullscreen button functionality
+document.getElementById('fullscreenBtn').addEventListener('click', function() {
+    if (!document.fullscreenElement) {
+        // Enter fullscreen
+        document.documentElement.requestFullscreen().then(() => {
+            this.textContent = '🚪 Exit Fullscreen';
+            this.style.background = '#f44336';
+            
+            // Resize the game when entering fullscreen
+            setTimeout(() => {
+                controller.width = window.innerWidth;
+                controller.height = window.innerHeight;
+                app.renderer.resize(window.innerWidth, window.innerHeight);
+            }, 100);
+        }).catch(err => {
+            console.error('Error attempting to enable fullscreen:', err.message);
+        });
+    } else {
+        // Exit fullscreen
+        document.exitFullscreen().then(() => {
+            this.textContent = '🎮 Fullscreen';
+            this.style.background = '#4CAF50';
+            
+            // Resize the game when exiting fullscreen
+            setTimeout(() => {
+                controller.width = window.innerWidth - 80;
+                controller.height = window.innerHeight - 80;
+                app.renderer.resize(controller.width, controller.height);
+            }, 100);
+        });
+    }
+});
+
+// Handle fullscreen change events
+document.addEventListener('fullscreenchange', function() {
+    const btn = document.getElementById('fullscreenBtn');
+    if (!document.fullscreenElement) {
+        btn.textContent = '🎮 Fullscreen';
+        btn.style.background = '#4CAF50';
+    }
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    if (document.fullscreenElement) {
+        controller.width = window.innerWidth;
+        controller.height = window.innerHeight;
+    } else {
+        controller.width = window.innerWidth - 80;
+        controller.height = window.innerHeight - 80;
+    }
+    app.renderer.resize(controller.width, controller.height);
 });
 
 </script>

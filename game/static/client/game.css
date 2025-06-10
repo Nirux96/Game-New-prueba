@@ -9,4 +9,17 @@ body {
   background-color: #262626;
   margin: 0;
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Remove padding in fullscreen */
+body:fullscreen {
+  padding: 0;
+}
+
+/* Style for fullscreen button on hover */
+#fullscreenBtn:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
 }
