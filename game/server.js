@@ -88,7 +88,9 @@ io.on('connection', function(socket) {
   });
 
   socket.on('input', function(input) {
-    let player = players[socket.id] || {};
+    let player = players[socket.id];
+    if (!player) return; // Si el jugador no existe, ignorar el input
+    
     let speed = model.map.square[Math.floor((player.y)/50)][Math.floor((player.x)/50)].speed;
     player.health -= model.map.square[Math.floor((player.y)/50)][Math.floor((player.x)/50)].damage;
     let oldX = player.x;
@@ -133,6 +135,8 @@ setInterval(function() {
 
   for (let key in players) {
     let thisPlayer=players[key];
+    if (!thisPlayer) continue; // Si el jugador no existe, saltar
+    
     let thisPlayerAbsolute=thisPlayer;
     let emitPlayers = JSON.parse(JSON.stringify(players));
     for (let key2 in emitPlayers) {
