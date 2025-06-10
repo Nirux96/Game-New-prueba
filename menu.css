@@ -1,122 +1,232 @@
-<style>
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  padding: 40px;
-  width: 1200px;
-  height: 800px;
-  background-color: #262626;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  
+  /* Fondo con imagen de Solana */
+  background-image: url('https://i.imgur.com/NzlR6RR.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  /* Overlay oscuro para contraste */
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* Contenedor principal centrado */
+.main-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 900px;
+  max-width: 90vw;
+  background: rgba(20, 20, 30, 0.95);
+  border: 3px solid #9945FF;
+  border-radius: 15px;
+  box-shadow: 
+    0 0 50px rgba(153, 69, 255, 0.5),
+    0 0 100px rgba(153, 69, 255, 0.3),
+    inset 0 0 20px rgba(153, 69, 255, 0.1);
+  overflow: hidden;
+  animation: solanaGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes solanaGlow {
+  from {
+    box-shadow: 
+      0 0 30px rgba(153, 69, 255, 0.5),
+      0 0 60px rgba(153, 69, 255, 0.3),
+      inset 0 0 20px rgba(153, 69, 255, 0.1);
+    border-color: #9945FF;
+  }
+  to {
+    box-shadow: 
+      0 0 50px rgba(153, 69, 255, 0.8),
+      0 0 100px rgba(153, 69, 255, 0.5),
+      0 0 150px rgba(20, 241, 149, 0.3),
+      inset 0 0 30px rgba(153, 69, 255, 0.2);
+    border-color: #14F195;
+  }
 }
 
 /* Style the header */
 header {
-  background-color: #666;
-  padding: 30px;
+  background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+  padding: 40px;
   text-align: center;
-  font-size: 35px;
   color: white;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-input[type=text] {
-    background-color: #f1f1f1;
-    border-radius: 4px;
-    color: black;
-    padding: 4px 4px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 200px;
-}
-input[type=submit] {
-    background-color: #777;
-    border-radius: 16px;
-    color: white;
-    padding: 5px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+header h2 {
+  font-size: 42px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-button[type=submit] {
-    background-color: #777;
-    border-radius: 16px;
-    color: white;
-    padding: 5px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-
-
+/* Caja de entrada al juego */
 enterGameBox {
-  float: left;
-  width: 25%;
-  height: 300px;
-  background: lightgrey;
-  align-content: center;
+  display: block;
+  width: 300px;
+  padding: 30px;
+  background: rgba(153, 69, 255, 0.1);
+  border: 2px solid rgba(153, 69, 255, 0.3);
+  border-radius: 10px;
   text-align: center;
-  margin: auto;
+  margin: 20px;
+  float: left;
+  transition: all 0.3s ease;
 }
 
+enterGameBox:hover {
+  background: rgba(153, 69, 255, 0.2);
+  border-color: #14F195;
+  box-shadow: 0 0 20px rgba(20, 241, 149, 0.3);
+}
+
+/* Input de texto estilo Solana */
+input[type=text] {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(153, 69, 255, 0.5);
+    border-radius: 8px;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    width: 250px;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border-color: #14F195;
+    box-shadow: 0 0 15px rgba(20, 241, 149, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+input[type=text]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Botones estilo Solana */
+input[type=submit], button[type=submit] {
+    background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(153, 69, 255, 0.3);
+    margin: 10px 0;
+}
+
+input[type=submit]:hover, button[type=submit]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 30px rgba(153, 69, 255, 0.5);
+    background: linear-gradient(135deg, #14F195 0%, #9945FF 100%);
+}
+
+/* Artículo principal */
 article {
   float: right;
-  width: 75%;
-  background-color: #f1f1f1;
-  height: 300px;
-  text-indent: 50px;
-  image-orientation:
-
-
+  width: calc(100% - 340px);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(153, 69, 255, 0.2);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px;
+  color: white;
+  min-height: 300px;
 }
 
-sourceCode {
-  float: right;
-  width: 100%;
-  background-color: #f1f1f1;
-  height: 3000px;
-  text-indent: 50px;
-  image-orientation:
+article h1 {
+  color: #14F195;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(20, 241, 149, 0.5);
 }
 
-sources {
-  float: left;
-  background-color: white;
-  height: 400px;
-  width: 100%;
-  text-indent: 0px;
-  line-height: 22px;
-  display: block;
+article p {
+  line-height: 1.8;
+  color: #e0e0e0;
+  font-size: 16px;
 }
-/* Clear floats after the columns */
+
+/* Sección principal */
+section {
+  padding: 20px;
+  min-height: 400px;
+}
+
 section:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.row {
-  display: flex;
-}
-
-.column {
-  flex: 33.33%;
-  padding: 10px;
-}
-
-
+/* Footer */
 footer {
-  background-color: #777;
-  padding: 10px;
+  background: linear-gradient(135deg, #14F195 0%, #9945FF 100%);
+  padding: 20px;
   text-align: center;
-  line-height: 150px;
   color: white;
-  height: 200px
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  position: relative;
+  bottom: 0;
 }
-</style>
+
+footer p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Enlaces */
+a {
+  color: #14F195;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #9945FF;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  enterGameBox, article {
+    float: none;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .main-wrapper {
+    width: 95vw;
+  }
+}

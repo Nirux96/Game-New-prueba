@@ -78,14 +78,19 @@ document.addEventListener('keyup', function(event) {
 });
 
 document.addEventListener('mousemove', function(event) {
-  let arg=(event.y-controller.height/2 - controller.padding)/(event.x-controller.width/2-controller.padding);
-  if (event.x>=controller.width/2 +controller.padding )
-    currentPlayer.direction = Math.atan(arg);
-  else
-    currentPlayer.direction = Math.PI-Math.atan((-1)*arg);
-  input.direction=currentPlayer.direction;
-  }
-);
+  // Obtener la posición del canvas en la página
+  const rect = app.view.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  
+  // Calcular el ángulo desde el centro del canvas hasta el mouse
+  const dx = event.clientX - centerX;
+  const dy = event.clientY - centerY;
+  
+  // Usar atan2 para obtener el ángulo correcto en todos los cuadrantes
+  currentPlayer.direction = Math.atan2(dy, dx);
+  input.direction = currentPlayer.direction;
+});
 
 document.addEventListener("mousedown", function() {
     input.LMB=true;

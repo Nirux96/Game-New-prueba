@@ -8,30 +8,32 @@
 </head>
 <body>
 
-<header>
-  <h2>Welcome to SolShot.io</h2>
-</header>
+<div class="main-wrapper">
+  <header>
+    <h2>Welcome to SolShot.io</h2>
+  </header>
 
-<section>
-  <enterGameBox>
+  <section>
+    <enterGameBox>
       <form action='goGame' method="post">
-        <h3>Enter your nick</h3><br>
-        <input type="text"  value="" name="nick"><p></p>
-        <input type="submit" value="Ok!"><p></p>
+        <h3 style="color: #14F195; margin-bottom: 15px;">Enter Your Name</h3>
+        <input type="text" value="" name="nick" placeholder="Your nickname" maxlength="12" required>
+        <input type="submit" value="Play Now!">
       </form>
-      <input type="submit" value="Help"  onclick="window.location='help.html';" /><p></p>
-  </enterGameBox>
+      <button type="submit" onclick="window.location='help.html';" style="margin-top: 10px;">Help</button>
+    </enterGameBox>
 
-  <article>
-    <h1>About</h1>
-    <p>This is not a simple game. Here you will lose or win all your Solanas.</p>
-<p>Graphic library is PIXI.js. Enjoy your stay. Don't try this at home. Peace.</p>
-  </article>
-</section>
+    <article>
+      <h1>About</h1>
+      <p>This is not a simple game. Here you will lose or win all your Solanas.</p>
+      <p>Graphic library is PIXI.js. Enjoy your stay. Don't try this at home. Peace.</p>
+    </article>
+  </section>
 
-<footer>
-  <p>Created by Terpay - Jesus loves you</p>
-</footer>
+  <footer>
+    <p>Created by Terpay - Jesus loves you</p>
+  </footer>
+</div>
 
 </body>
 </html>
