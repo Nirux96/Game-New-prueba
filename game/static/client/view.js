@@ -123,7 +123,7 @@ for (let i=0; i<length; i++){
 let miniMap = new PIXI.Graphics();
 miniMap.lineStyle(1, 0x000000, 1);
 miniMap.beginFill('black', 0.5);
-miniMap.drawRect(controller.width - 120, controller.height - 120, 100, 100);
+miniMap.drawRect(880, 580, 100, 100);
 miniMap.endFill();
 app.stage.addChild(miniMap);
 for (let id in players) {
@@ -134,7 +134,7 @@ for (let id in players) {
     pointPlayer .beginFill(0x008111);
   else
     pointPlayer .beginFill(0xFF0000);
-  pointPlayer.drawCircle(controller.width - 120+(player.x+currentPlayer.xAbsolute-500)/5000*100, controller.height - 120+(player.y+currentPlayer.yAbsolute-400)/5000*100, 3);
+  pointPlayer.drawCircle(880+(player.x+currentPlayer.xAbsolute-500)/5000*100, 580+(player.y+currentPlayer.yAbsolute-400)/5000*100, 3);
   pointPlayer.endFill();
   app.stage.addChild(pointPlayer);
 }
@@ -142,21 +142,21 @@ for (let id in players) {
 let leaderboardBackground = new PIXI.Graphics();
 leaderboardBackground.lineStyle(2, 0x000000, 0.7);
 leaderboardBackground.beginFill('black', 0.3);
-leaderboardBackground. drawRoundedRect(controller.width - 210, 10, 200, 200, 10);
+leaderboardBackground. drawRoundedRect(790, 10, 200, 200, 10);
 leaderboardBackground.endFill();
 app.stage.addChild(leaderboardBackground);
 
 let leaderboardVerticalLine = new PIXI.Graphics();
 
 leaderboardVerticalLine.beginFill(0x000000, 0.7);
-leaderboardVerticalLine.drawRect(controller.width - 70, 20, 2, 180);
+leaderboardVerticalLine.drawRect(930, 20, 2, 180);
 leaderboardVerticalLine.endFill();
 app.stage.addChild(leaderboardVerticalLine);
 
 let leaderboardHorizontalLine = new PIXI.Graphics();
 
 leaderboardHorizontalLine.beginFill(0x000000, 0.7);
-leaderboardHorizontalLine.drawRect(controller.width - 200, 40, 180, 2);
+leaderboardHorizontalLine.drawRect(800, 40, 180, 2);
 leaderboardHorizontalLine.endFill();
 app.stage.addChild(leaderboardHorizontalLine);
 
@@ -165,20 +165,20 @@ app.stage.addChild(leaderboardHorizontalLine);
 
   let leaderboardTitle = new PIXI.Text("NICK              KILLS");
   leaderboardTitle.style = {fill: 'white', strokeThickness: 0, fontSize: 15};
-  leaderboardTitle.position.set(controller.width - 150, 20);
+  leaderboardTitle.position.set(850, 20);
   app.stage.addChild(leaderboardTitle);
 
     for (let i=0; i<leaderboard.length; i++ ) {
       let entryName = new PIXI.Text(i+1+". " + leaderboard[i].name);
       entryName.anchor.set(0.5,0.5);
       entryName.style = {fill: 'white', strokeThickness: 0, fontSize: 15};
-      entryName.position.set(controller.width - 140, 55+i*20);
+      entryName.position.set(860, 55+i*20);
       app.stage.addChild(entryName);
 
       let entryKills = new PIXI.Text(leaderboard[i].score);
       entryKills.anchor.set(0.5,0.5);
       entryKills.style = {fill: 'white', strokeThickness: 0, fontSize: 15};
-      entryKills.position.set(controller.width - 40, 55+i*20);
+      entryKills.position.set(960, 55+i*20);
       app.stage.addChild(entryKills);
 
       if(i>=7)

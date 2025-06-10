@@ -3,23 +3,53 @@
 }
 
 body {
-  cursor: crosshair;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 40px;
-  background-color: #262626;
   margin: 0;
-  overflow: hidden;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  /* Fondo épico de shooter */
+  background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  /* Overlay oscuro para mejor contraste */
+  position: relative;
 }
 
-/* Remove padding in fullscreen */
-body:fullscreen {
-  padding: 0;
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 
-/* Style for fullscreen button on hover */
-#fullscreenBtn:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s;
+#gameContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 1000px;
+  height: 700px;
+  border: 3px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: 
+    0 0 50px rgba(0, 255, 0, 0.5),
+    0 0 100px rgba(0, 255, 0, 0.3),
+    inset 0 0 20px rgba(0, 255, 0, 0.1);
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+#gameContainer canvas {
+  display: block;
+  border-radius: 7px;
 }

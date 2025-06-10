@@ -3,8 +3,8 @@ class Controller {
     constructor() {
       this.squareWidthInPixels = 50;
       this.squareHeightInPixels = 50;
-      this.width = window.innerWidth - 80;         // Pantalla completa menos padding
-      this.height = window.innerHeight - 80;
+      this.width = 1000;         // Tamaño fijo del juego
+      this.height = 700;         // Tamaño fijo del juego
       this.playerSpriteWidth = 50;
       this.playerSpriteHeight = 50;
       this.mode = 'alive';
