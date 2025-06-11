@@ -15,7 +15,7 @@ body {
   cursor: crosshair;
   
   /* Fondo con imagen de Solana 3D */
-  background-image: url('https://i.ibb.co/7dmnC4x5/PXL-20250610-003415366.jpg');
+  background-image: url('/static/client/sprites/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
