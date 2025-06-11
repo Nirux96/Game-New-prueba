@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Game</title>
+  <title>Solana Shooter Game</title>
   <link rel="stylesheet" href="static/client/game.css">
   <link rel="stylesheet" href="static/client/background-custom.css">
 </head>
@@ -18,13 +18,11 @@
 "use strict";
 let leaderboard = [];
 var controller = new Controller();
+let gameStarted = false;
 
-</script><script src="static/client/view.js"></script><script>
-function Terrain(pathArg)  {
-  this.path=pathArg;
-}
-document.getElementById('gameContainer').appendChild(app.view);
-
+</script>
+<script src="static/client/view.js"></script>
+<script>
 let gameMap = new GameMap();
 let players = [];
 let bullets = [];
@@ -39,7 +37,7 @@ let input = {
   down: false,
   left: false,
   right: false,
-  direction:  Math.PI,
+  direction: Math.PI,
   LMB: false,
 }
 
@@ -78,30 +76,93 @@ document.addEventListener('keyup', function(event) {
 });
 
 document.addEventListener('mousemove', function(event) {
-  // Obtener la posición del canvas en la página
-  const rect = app.view.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-  
-  // Calcular el ángulo desde el centro del canvas hasta el mouse
-  const dx = event.clientX - centerX;
-  const dy = event.clientY - centerY;
-  
-  // Usar atan2 para obtener el ángulo correcto en todos los cuadrantes
-  currentPlayer.direction = Math.atan2(dy, dx);
-  input.direction = currentPlayer.direction;
+  if (app && app.view) {
+    // Obtener la posición del canvas en la página
+    const rect = app.view.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Calcular el ángulo desde el centro del canvas hasta el mouse
+    const dx = event.clientX - centerX;
+    const dy = event.clientY - centerY;
+    
+    // Usar atan2 para obtener el ángulo correcto en todos los cuadrantes
+    currentPlayer.direction = Math.atan2(dy, dx);
+    input.direction = currentPlayer.direction;
+  }
 });
 
 document.addEventListener("mousedown", function() {
-    input.LMB=true;
+    input.LMB = true;
 });
 document.addEventListener("mouseup", function() {
-    input.LMB=false;
+    input.LMB = false;
 });
 
+function startGame(walletAddress, paymentTxId, nickname) {
+  socket = io();
+  
+  socket.emit('new player', {
+    walletAddress: walletAddress,
+    paymentTxId: paymentTxId,
+    nick: nickname
+  });
+  
+  socket.on('connection-status', function(data) {
+    if (data.success) {
+      document.getElementById('wallet-connection').style.display = 'none';
+      gameStarted = true;
+      initializeGame();
+    } else {
+      walletManager.showStatus(data.message, 'error');
+    }
+  });
 
+  socket.on('update', function(newPlayers, newCurrentPlayer, newAbsoluteCurrentPlayer, currentPlayerMap, bulletsArg, itemsArg, leaderboard2) {
+    players = newPlayers;
+    currentPlayer = newCurrentPlayer;
+    leaderboard = leaderboard2;
+    if (newAbsoluteCurrentPlayer) {
+      currentPlayer.xAbsolute = newAbsoluteCurrentPlayer.x;
+      currentPlayer.yAbsolute = newAbsoluteCurrentPlayer.y;
+    }
+    bullets = bulletsArg;
+    items = itemsArg;
 
+    if (gameMap && currentPlayerMap) {
+      for (var i = 0; i < 17; i++) {
+        for (var j = 0; j < 21; j++) {
+          if (gameMap.square[i] && gameMap.square[i][j]) {
+            gameMap.square[i][j].path = 'static/client/sprites/' + currentPlayerMap[i][j] + '.png';
+          }
+        }
+      }
+    }
+  });
+
+  socket.on('death', function() {
+    setTimeout(function() { controller.mode = "dead"; }, 1000);
+    setTimeout(function() {
+      if (window.confirm("💀 You were killed! Want to play again?")) {
+        window.location.reload();
+      } else {
+        window.location.reload();
+      }
+    }, 1500);
+  });
+
+  setInterval(function() {
+    if (gameStarted && socket) {
+      socket.emit('input', input);
+    }
+  }, 1000 / 60);
+}
+
+function initializeGame() {
+  gameMap = new GameMap();
+  currentPlayer = new CurrentPlayer();
+  controller.newPlayer();
+}
 </script>
-
 </body>
 </html>

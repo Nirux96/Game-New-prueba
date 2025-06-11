@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  
+  /* Fondo con la imagen proporcionada */
+  background-image: url('static/client/background-solana-shooter.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  /* Overlay con gradiente sofisticado */
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(10, 10, 20, 0.85) 0%, 
+    rgba(30, 20, 50, 0.75) 50%, 
+    rgba(50, 30, 80, 0.65) 100%);
+  z-index: 1;
+}
+
+/* Efecto de partículas animadas */
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, rgba(153, 69, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(20, 241, 149, 0.2), transparent),
+    radial-gradient(1px 1px at 90% 10%, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 200%;
+  animation: particlesFloat 20s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes particlesFloat {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-20px, -20px); }
+  66% { transform: translate(20px, -10px); }
+}
+
+/* Contenedor principal - Glassmorphism premium */
+.main-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 960px;
+  max-width: 92vw;
+  
+  /* Glassmorphism effect */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Border sofisticado */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  
+  /* Sombras múltiples para profundidad */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 80px rgba(153, 69, 255, 0.2);
+  
+  overflow: hidden;
+  animation: floatAnimation 6s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+/* Header premium */
+header {
+  background: transparent;
+  padding: 48px 40px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(135deg, #ffffff 0%, #9945FF 50%, #14F195 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  position: relative;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+/* Caja de entrada al juego - Diseño premium */
+enterGameBox {
+  display: block;
+  width: 340px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  text-align: center;
+  margin: 20px;
+  float: left;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+enterGameBox h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  color: #14F195;
+}
+
+/* Input de texto premium */
+input[type=text] {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #ffffff;
+  padding: 16px 24px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  transition: all 0.3s;
+  margin-bottom: 20px;
+}
+
+input[type=text]:focus {
+  outline: none;
+  border-color: rgba(153, 69, 255, 0.5);
+  box-shadow: 0 0 20px rgba(153, 69, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+input[type=submit], button {
+  background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 30px rgba(153, 69, 255, 0.3);
+  width: 100%;
+}
+
+input[type=submit]:hover, button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(153, 69, 255, 0.4);
+}
+
+section {
+  padding: 20px;
+  overflow: hidden;
+}
+
+article {
+  width: calc(100% - 380px);
+  margin: 20px;
+  padding: 40px;
+  float: left;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  color: white;
+  transition: all 0.4s;
+}
+
+article h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #14F195;
+  letter-spacing: 1px;
+}
+
+article p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+footer {
+  clear: both;
+  padding: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  position: relative;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  enterGameBox, article {
+    width: 100%;
+    float: none;
+    margin: 20px 0;
+  }
+  
+  .main-wrapper {
+    height: 100vh;
+    overflow-y: auto;
+  }
+} 

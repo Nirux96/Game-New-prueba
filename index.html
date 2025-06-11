@@ -1,54 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <title>SolShot.io</title>
-  <link rel="stylesheet" href="menu.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Solana Shooter Game</title>
+<link rel="stylesheet" href="game/menu.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
 <div class="main-wrapper">
   <header>
-    <div class="logo-container">
-      <h2 class="glow-text">Welcome to SolShot.io</h2>
-    </div>
+    <h2>Bienvenido a SolShot.io</h2>
   </header>
 
   <section>
     <enterGameBox>
-      <div class="game-form">
-        <h3>Enter Your Name</h3>
-        <form action='goGame' method="post">
-          <div class="input-group">
-            <input type="text" name="nick" placeholder="Your nickname" maxlength="12" required>
-          </div>
-          <div class="button-group">
-            <input type="submit" value="Play Now" class="primary-button">
-            <button type="button" onclick="window.location='help.html';" class="secondary-button">Help</button>
-          </div>
-        </form>
-      </div>
+      <form action='game/goGame' method="post">
+        <h3>Ingresa tu nickname</h3><br>
+        <input type="text" value="" name="nick"><p></p>
+        <input type="submit" value="¡Jugar!"><p></p>
+      </form>
+      <button onclick="window.location='game/help.html';">Ayuda</button><p></p>
     </enterGameBox>
 
     <article>
-      <div class="about-content">
-        <h1>About</h1>
-        <div class="description">
-          <p>This is not a simple game. Here you will lose or win all your Solanas.</p>
-          <p>Graphic library is PIXI.js. Enjoy your stay. Don't try this at home. Peace.</p>
-        </div>
-      </div>
+      <h1>Acerca del juego</h1>
+      <p>Este no es un juego simple. Aquí perderás o ganarás todas tus Solanas.</p>
+      <p>La biblioteca gráfica es PIXI.js. Disfruta tu estadía. No intentes esto en casa. Paz.</p>
     </article>
   </section>
 
   <footer>
-    <p>Created by Terpay - Jesus loves you</p>
+    <p>Creado por Terpay - Jesús te ama</p>
   </footer>
 </div>
 
 </body>
-</html>
+</html> 
