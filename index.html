@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Game</title>
-<link rel="stylesheet" href="menu.css">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SolShot.io</title>
+  <link rel="stylesheet" href="menu.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="main-wrapper">
   <header>
-    <h2>Welcome to SolShot.io</h2>
+    <div class="logo-container">
+      <h2 class="glow-text">Welcome to SolShot.io</h2>
+    </div>
   </header>
 
   <section>
     <enterGameBox>
-      <form action='goGame' method="post">
-        <h3 style="color: #14F195; margin-bottom: 15px;">Enter Your Name</h3>
-        <input type="text" value="" name="nick" placeholder="Your nickname" maxlength="12" required>
-        <input type="submit" value="Play Now!">
-      </form>
-      <button type="submit" onclick="window.location='help.html';" style="margin-top: 10px;">Help</button>
+      <div class="game-form">
+        <h3>Enter Your Name</h3>
+        <form action='goGame' method="post">
+          <div class="input-group">
+            <input type="text" name="nick" placeholder="Your nickname" maxlength="12" required>
+          </div>
+          <div class="button-group">
+            <input type="submit" value="Play Now" class="primary-button">
+            <button type="button" onclick="window.location='help.html';" class="secondary-button">Help</button>
+          </div>
+        </form>
+      </div>
     </enterGameBox>
 
     <article>
-      <h1>About</h1>
-      <p>This is not a simple game. Here you will lose or win all your Solanas.</p>
-      <p>Graphic library is PIXI.js. Enjoy your stay. Don't try this at home. Peace.</p>
+      <div class="about-content">
+        <h1>About</h1>
+        <div class="description">
+          <p>This is not a simple game. Here you will lose or win all your Solanas.</p>
+          <p>Graphic library is PIXI.js. Enjoy your stay. Don't try this at home. Peace.</p>
+        </div>
+      </div>
     </article>
   </section>
 
