@@ -14,7 +14,7 @@ let sand = new Terrain (3, 'sand', 0, 1);
 let edge = new Terrain (3, 'edge', 0, 0);
 let grass = new Terrain (5, 'grass', 0, 1);
 let water = new Terrain (2, 'water', 0, 1);
-let lava = new Terrain (10, 'lava', 5, 1);
+let lava = new Terrain (10, 'lava', 2, 1);
 let brick = new Terrain (3, 'brick', 0, 0);
 let floor = new Terrain (6, 'floor', 0, 1);
 
